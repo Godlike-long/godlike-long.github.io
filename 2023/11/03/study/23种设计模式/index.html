@@ -1,0 +1,634 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.1.1">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>23种设计模式 - Sentry's Blog</title>
+
+  
+    <meta name="description" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="23种设计模式">
+<meta property="og:url" content="https://coclong.gitee.io/2023/11/03/study/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Sentry&#39;s Blog">
+<meta property="og:description" content="设计模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-03T14:42:06.000Z">
+<meta property="article:modified_time" content="2024-03-10T11:45:30.133Z">
+<meta property="article:author" content="sentry">
+<meta property="article:tag" content="学无止境">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <meta name="keywords" content="学无止境">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://foruda.gitee.com/avatar/1677090168613487741/7674882_coclong_1619494197.png!avatar200">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://q1.qlogo.cn/g?b=qq&nk=2930811148&s=100" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Sentry's Blog</div><div class="sub normal cap">被人记住的感觉真好啊</div><div class="sub hover cap" style="opacity:0">孤独伴我同行</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="文章" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="项目" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="便笺" href="/notes/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="更多" href="/more/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/09/07/other/%E6%B8%B8%E9%BE%99%E5%BD%93%E5%BD%92%E6%B5%B7/"><span class="title">游龙当归海，海不迎我自来也</span></a><a class="item title" href="/2023/07/11/base/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"><span class="title">常用软件</span></a><a class="item title" href="/2023/07/28/base/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/"><span class="title">博客美化</span></a><a class="item title" href="/2023/08/13/study/Java%E4%BB%A3%E7%A0%81%E7%B2%BE%E7%AE%80%E6%8C%87%E5%8D%97/"><span class="title">Java代码精简指南</span></a><a class="item title" href="/2023/07/16/base/%E5%86%99%E4%BD%9C%E5%A7%BF%E5%8A%BF/"><span class="title">写作姿势</span></a><a class="item title" href="/2023/12/15/other/%E9%80%89%E6%8B%A9/"><span class="title">找工作</span></a><a class="item title" href="/2023/10/02/other/%E8%80%83%E9%A9%BE%E7%85%A7%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"><span class="title">考驾照的那些事儿</span></a><a class="item title" href="/2023/08/29/study/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/"><span class="title">服务器搭建</span></a><a class="item title" href="/2023/11/09/study/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/"><span class="title">分布式事务详解</span></a><a class="item title" href="/2023/08/12/practice/SQL%E7%BB%83%E4%B9%A0/"><span class="title">SQL练习</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://gitee.com/coclong" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a><a class="social" href="https://wpa.qq.com/msgrd?v=3&uin=2930811148&site=qq&menu=yes&jumpflag=1" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/footer/qq32.svg"/></a><a class="social" href="/" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3616429.svg"/></a><a class="social" href="/more" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E8%83%BD/">技能</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-11-03T14:42:06.000Z">2023-11-03</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-10T11:45:30.133Z">2024-03-10</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>23种设计模式</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>使用书籍：《大话设计模式》——程杰著</p>
+<p>相关代码：<a class="tag-plugin colorful hashtag" color="red" target="_blank" rel="noopener" href="https://gitee.com/coclong/design_pattern"><svg t="1701408144765" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4228" width="200" height="200"><path d="M426.6 64.8c34.8 5.8 58.4 38.8 52.6 73.6l-19.6 117.6h190.2l23-138.6c5.8-34.8 38.8-58.4 73.6-52.6s58.4 38.8 52.6 73.6l-19.4 117.6H896c35.4 0 64 28.6 64 64s-28.6 64-64 64h-137.8l-42.6 256H832c35.4 0 64 28.6 64 64s-28.6 64-64 64h-137.8l-23 138.6c-5.8 34.8-38.8 58.4-73.6 52.6s-58.4-38.8-52.6-73.6l19.6-117.4h-190.4l-23 138.6c-5.8 34.8-38.8 58.4-73.6 52.6s-58.4-38.8-52.6-73.6l19.4-117.8H128c-35.4 0-64-28.6-64-64s28.6-64 64-64h137.8l42.6-256H192c-35.4 0-64-28.6-64-64s28.6-64 64-64h137.8l23-138.6c5.8-34.8 38.8-58.4 73.6-52.6z m11.6 319.2l-42.6 256h190.2l42.6-256h-190.2z" p-id="4229"></path></svg><span>Gitee</span></a></p>
+<p>使用设计模式的目的：<del>可维护、可扩展、可复用、灵活性好</del> 装逼，写一些别人看不懂的代码</p>
+<h2 id="一、简单工厂模式"><a href="#一、简单工厂模式" class="headerlink" title="一、简单工厂模式"></a>一、简单工厂模式</h2><p>个人理解：通过创建同一类型下的不同子类来实现多态，难点在于定义抽象类，需要找出共同特征，确保需要实现的方法返回值相同，参数一致</p>
+<h2 id="二、策略模式"><a href="#二、策略模式" class="headerlink" title="二、策略模式"></a>二、策略模式</h2><ul>
+<li>面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象的抽象集合才是类</li>
+<li>用工厂来生成算法对象，这没有错，但算法本身只是一种策略，最重要的是这些算法是随时都可能互相替换的，这就是变化点，而封装变化点是我们面向对象的一种很重要的思维方式</li>
+<li>策略模式是一种定义一系列算法的方法，从概念上来看，所有这些算法完成的都是相同的工作，只是实现不同，它可以以相同的方式调用所有的算法，减少了各种算法类与使用算法类之间的耦合</li>
+<li>当不同的行为堆砌在一个类中时，就很难避免使用条件语句来选择合适的行为。将这些行为封装在一个个独立的 <strong>Strategy</strong>类中，可以在使用这些行为的类中消除条件语句</li>
+</ul>
+<p>个人理解：在简单工厂模式的基础上增加了一层 <code>context</code>，使得具体的业务策略与客户端分离，减少了各种算法类与使用算法类之间的耦合</p>
+<h2 id="三、单一职责原则"><a href="#三、单一职责原则" class="headerlink" title="三、单一职责原则"></a>三、单一职责原则</h2><p>就一个类而言，应该仅有一个引起它变化的原因</p>
+<h2 id="四、开放封闭原则"><a href="#四、开放封闭原则" class="headerlink" title="四、开放封闭原则"></a>四、开放封闭原则</h2><ul>
+<li>对于扩展是开放的，对于修改是封闭的</li>
+<li>我们在做任何系统的时候，都不要指望系统一开始时需求确定，就再也不会变化，这是不现实也不科学的想法</li>
+<li>开发人员应该<mark class="tag-plugin colorful mark" color="red">仅对程序中呈现出频繁变化的那些部分</mark> 做出抽象，然而， 对于应用程序中的每个部分都刻意地进行抽象同样不是一个好主意。拒绝不成熟的抽象和抽象本身一样重要</li>
+</ul>
+<h2 id="五、依赖倒转原则"><a href="#五、依赖倒转原则" class="headerlink" title="五、依赖倒转原则"></a>五、依赖倒转原则</h2><ul>
+<li><strong>抽象不应该依赖细节，细节应该依赖于抽象</strong><ul>
+<li>针对接口编程，不要对实现编程</li>
+</ul>
+</li>
+<li>里氏代换原则：子类型必须能够替换掉它们的父类型<ul>
+<li>一个软件实体如果使用的是一个父类的话，那么一定适用于其子类，而且它察觉不出父类对象和子类对象的区别。也就是说，在软件里面，把父类都替换成它的子类，程序的行为没有变化</li>
+<li>也正因为有了这个原则，使得继承复用成为可能。<strong>只有当子类可以替换掉父类，软件单位的功能不受到影响时，父类才能真正被复用，而子类也能够在父类的基础上增加新的行为</strong></li>
+<li>正是由于子类型的可替换性才使得使用父类类型的模块在无须修改的情况下就可以扩展</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、装饰模式"><a href="#六、装饰模式" class="headerlink" title="六、装饰模式"></a>六、装饰模式</h2><ul>
+<li>动态地给一个对象添加一些额外的职责</li>
+<li>把类的装饰功能从类中搬移去除，这样可以简化原有的类</li>
+<li>有效地把类的核心功能和装饰功能区分开了，而且可以去除相关类中重复的装饰逻辑</li>
+</ul>
+<p>个人理解：首先区分出装饰者与被装饰者，比如人被球鞋，裤子，T恤装饰；将所有的装饰者提取出一个父类，该父类与被装饰者具备一个共同特征（需要抽象为接口），其实就是需要装饰的具体功能，比如人和衣物能够对外展示；该父类还需提供一个被装饰者的属性，这个例子中，衣物的展示本质上是调用被装饰者的展示；具体的子类在装饰功能中不能忘记以 <code>super</code> 的方式调用上级装饰</p>
+<h2 id="七、代理模式"><a href="#七、代理模式" class="headerlink" title="七、代理模式"></a>七、代理模式</h2><p>为其他对象提供一种代理以控制对这个对象的访问</p>
+<blockquote>
+<p>应用场景</p>
+</blockquote>
+<ul>
+<li>远程代理，也就是为一个对象在不同的地址空间提供局部代表。这样可以隐藏一个对象存在于不同地址空间的事实</li>
+<li>虚拟代理，是根据需要创建开销很大的对象。通过它来存放实例化需要很长时间的真实对象</li>
+<li>安全代理，用来控制真实对象访问时的权限</li>
+<li>智能指引，是指当调用真实的对象时，代理处理另外一些事</li>
+</ul>
+<p>个人理解：找到需要被代理的类，根据它的行为创建出代理类（实现同样的行为接口）；在代理类中具有被代理类的一个属性，可以在代理类初始化的时候为被代理类赋值；代理类的行为实际上是调用被代理类的行为方法</p>
+<h2 id="八、工厂方法模式"><a href="#八、工厂方法模式" class="headerlink" title="八、工厂方法模式"></a>八、工厂方法模式</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类，是对简单工厂模式的进一步抽象和推广，本质是<strong>对获取对象过程的抽象</strong></p>
+<p>个人理解：在简单工厂的基础上，将具有共同特征的子类又划分了一层工厂，使用者根据参数决定使用哪个工厂，工厂来负责实例化具体对象</p>
+<h2 id="九、原型模式"><a href="#九、原型模式" class="headerlink" title="九、原型模式"></a>九、原型模式</h2><p>从一个对象再创建另外一个可定制的对象，而且不需要知道任何创建的细节</p>
+<p>一般在初始化的信息不发生变化的情况下，克隆是最好的办法。这既隐藏了对象创建的细节，又对性能是大大的提高。不用重新初始化对象，而是动态地获得对象运行时的状态</p>
+<blockquote>
+<p>super.clone() 方法</p>
+</blockquote>
+<p>如果字段是值类型的，则对该字段进行逐位复制，如果字段是引用类型，则复制引用但不复制引用的对象；因此，原始对象及其副本引用同一对象</p>
+<p>个人理解：一种能创建对象且复制对象属性值的方式，需要实现 <code>Cloneable</code> 接口，重写 <code>clone</code> 方法。需要注意的是，如果是引用类型的属性，则该引用类型也要重写 <code>clone</code> 方法，这样引用的才不会是原始对象。</p>
+<figure class="highlight java"><figcaption><span>重写示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> WorkDemo <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">    WorkDemo object;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        object = ((WorkDemo) <span class="built_in">super</span>.clone());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;clone失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、模板方法模式"><a href="#十、模板方法模式" class="headerlink" title="十、模板方法模式"></a>十、模板方法模式</h2><p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤</p>
+<p>模板方法模式是通过把不变行为搬移到超类，去除子类中的重复代码来体现它的优势</p>
+<p>个人理解：定义一个抽象类，提供一些抽象方法交由子类实现，这些抽象方法只有抽象类中的<mark class="tag-plugin colorful mark" color="red">普通方法</mark> 能调用，在普通方法中提供通用实现</p>
+<h2 id="十一、迪米特法则"><a href="#十一、迪米特法则" class="headerlink" title="十一、迪米特法则"></a>十一、迪米特法则</h2><p>迪米特法则，也叫最少知识原则：如果两个类不必彼此直接通信，那么这两个类就不应当发生直接的相互作用。如果其中一个类需要调用另一个类的某一个方法，可以通过第三者转发这个调用</p>
+<p>在类的结构设计上，每一个类都应当尽量降低成员的访问权限<br>类之间的耦合越弱，越有利于复用，一个处在弱耦合的类被修改，不会对有关系的类造成波及</p>
+<h2 id="十二、外观模式"><a href="#十二、外观模式" class="headerlink" title="十二、外观模式"></a>十二、外观模式</h2><p>为子系统中的一组接口提供一个一致的界面，此模式定义了一个高层接口，这个接口使得这一子系统更加容易使用</p>
+<blockquote>
+<p>使用场景</p>
+</blockquote>
+<ul>
+<li>首先，在设计初期阶段，应该要有意识地将不同的两个层分离</li>
+<li>其次，在开发阶段，子系统往往因为不断地重构演化而变得越来越复杂。增加外观 Facade 可以提供一个简单的接口，减少它们之间的依赖</li>
+<li>第三，在维护一个遗留的大型系统时，可能这个系统已经非常难以维护和扩展了</li>
+</ul>
+<p>个人理解：其实就是分层的概念，由上层来封装下一层具体的调用过程</p>
+<h2 id="十三、建造者模式"><a href="#十三、建造者模式" class="headerlink" title="十三、建造者模式"></a>十三、建造者模式</h2><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示</p>
+<p><strong>指挥者</strong>：用它来控制建造过程，也用它来隔离用户与建造过程的关联</p>
+<p>建造者模式是在当创建复杂对象的算法应该<strong>独立</strong>于该对象的组成部分以及它们的装配方式时适用的模式</p>
+<p>个人理解：核心部分为一个指挥者类和一个建造者的抽象类，指挥者需要对外提供一个方法，负责去调用建造者中的抽象方法，这个方法就是建造过程，参数为一名建造者</p>
+<h2 id="十四、观察者模式"><a href="#十四、观察者模式" class="headerlink" title="十四、观察者模式"></a>十四、观察者模式</h2><p>观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。</p>
+<blockquote>
+<p>使用场景</p>
+</blockquote>
+<ul>
+<li>当一个对象的改变需要同时改变其他对象的时候</li>
+<li>不知道具体有多少对象需要改变</li>
+<li>当一个抽象模型有两个方面，其中一方面依赖于另一方面，这时使用观察者模式可以将这两者封装在独立的对象中使它们各自独立地改变和复用</li>
+</ul>
+<p>个人理解：两个关键角色，抽象观察者和抽象通知者。抽象观察者中通常具备一个事件类型的属性，再提供一个改变自身行为的抽象方法，由通知者来调用；抽象通知者中会有一个<mark class="tag-plugin colorful mark" color="red">抽象观者者类型</mark>的数组，这里就是所有需要通知的观察者，并提供方法入口用来添加和删除它们；当通知者发起通知时，就是遍历该数组，提供事件类型，并调用观察者中的改变方法</p>
+<h2 id="十五、抽象工厂模式"><a href="#十五、抽象工厂模式" class="headerlink" title="十五、抽象工厂模式"></a>十五、抽象工厂模式</h2><p>提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类</p>
+<p>个人理解：提供一系列接口，由访问者类根据情况决定具体实例化某个类</p>
+<h2 id="十六、状态模式"><a href="#十六、状态模式" class="headerlink" title="十六、状态模式"></a>十六、状态模式</h2><p>状态模式主要解决的是当控制一个对象状态转换的条件表达式过于复杂时的情况。把状态的判断逻辑转移到表示不同状态的一系列类当中，可以把复杂的判断逻辑简化。</p>
+<p>当一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为时，就可以考虑使用状态模式了。</p>
+<p>状态模式的好处是将与特定状态相关的行为局部化，并且将不同状态的行为分割开来。</p>
+<p>个人理解：提供一个实体类和一个抽象状态类，实体类中可以设置不同的状态（初始化实体的时候可以提供一个状态），抽象状态类则有一个抽象的行为方法，参数为实体类；实体类中需要提供一个工作方法，用来调用自身当前状态的行为方法；在抽象状态类的行为方法中，子类在这里实现不同的行为，且可以改变实体的当前状态，改变状态之后再调用实体的工作方法。这样就完成了一个事物经过不同状态时的变化</p>
+<h2 id="十七、适配器模式"><a href="#十七、适配器模式" class="headerlink" title="十七、适配器模式"></a>十七、适配器模式</h2><p>适配器模式主要应用于希望复用一些现存的类，但是接口又与复用环境要求不一致的情况</p>
+<p>个人理解：核心思想也是加了一层，当通用的调用逻辑不满足时，新建一个具体的实现类，由具体实现类来处理新的逻辑，通用的调用逻辑改为调用该新类的逻辑。</p>
+<h2 id="十八、备忘录模式"><a href="#十八、备忘录模式" class="headerlink" title="十八、备忘录模式"></a>十八、备忘录模式</h2><p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态</p>
+<ul>
+<li><strong>Originator（发起人）</strong>：负责创建一个备忘录Memento，用以记录当前时刻它的内部状态，并可使用备忘录恢复内部状态。Originator可根据需要决定Memento存储Originator的哪些内部状态</li>
+<li><strong>Memento（备忘录）</strong>：负责存储Originator对象的内部状态，并可防止Originator以外的其他对象访问。备忘录有两个接口，Caretaker只能看到备忘录的窄接口，它只能将备忘录传递给其他对象。Originator能够看到一个宽接口，允许它访问返回到先前状态所需的所有数据</li>
+<li><strong>Caretaker（管理者）</strong>：负责保存好备忘录Memento，不能对备忘录的内容进行操作或检查</li>
+</ul>
+<p>个人理解：提供一个备忘录类，能够保存目标实体中的属性值；而目标实体中需要自己决定如何创建备忘录，备忘录中保存哪些数据，同时还要提供一个能根据备忘录恢复的方法；还要有一个管理者类，专门负责保管备忘录（内存中）</p>
+<h2 id="十九、组合模式"><a href="#十九、组合模式" class="headerlink" title="十九、组合模式"></a>十九、组合模式</h2><p><strong>整体与部分可以一致对待</strong></p>
+<blockquote>
+<p>何时使用组合模式</p>
+</blockquote>
+<p>希望可以忽略组合对象与单个对象的不同，统一地使用组合结构中的所有对象时，就可以考虑使用组合模式</p>
+<p>个人理解：适用于功能一致的一组对象，实现同一个抽象类，每一层只实现自己需要的功能，常用于表示父子组合；“父”中会有一个 <code>children</code> 属性，当“父”实现自身功能时，可以遍历 <code>children</code> 并调用其中的”子”功能（各司其职，“父”的职责就是调用”子“的功能）</p>
+<h2 id="二十、迭代器模式"><a href="#二十、迭代器模式" class="headerlink" title="二十、迭代器模式"></a>二十、迭代器模式</h2><p>迭代器模式就是分离了集合对象的遍历行为，抽象出一个迭代器类来负责，这样既可以做到不暴露集合的内部结构，又可以让外部代码透明地访问集合内部的数据。</p>
+<p>个人理解：其实就是各大语言中都有的遍历的概念，讲究一个遍历的规则</p>
+<h2 id="二十一、单例模式"><a href="#二十一、单例模式" class="headerlink" title="二十一、单例模式"></a>二十一、单例模式</h2><p>保证一个类仅有一个单例，并提供一个访问它的全局访问点</p>
+<p>单例模式因为单例类封装它的唯一实例，这样它可以严格地控制客户怎样访问它以及何时访问它，简单来说就是对唯一实例的受控访问</p>
+<ul>
+<li>饿汉式单例类：静态初始化，在自己被加载的时候就将自己实例化。会提前占用系统资源</li>
+<li>懒汉式单例类：在第一次被引用时，才会进行实例化。面临多线程访问的安全性问题，需要做双重否定的处理</li>
+</ul>
+<p>个人理解：隐藏构造方法，提供一个静态的 <code>getInstance</code> 方法。</p>
+<figure class="highlight java"><figcaption><span>代码示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">    <span class="comment">// 静态初始化</span></span><br><span class="line">    <span class="comment">// private static Singleton instance = new Singleton();</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 双重否定</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二十二、桥接模式"><a href="#二十二、桥接模式" class="headerlink" title="二十二、桥接模式"></a>二十二、桥接模式</h2><p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化</p>
+<p>尽量使用合成&#x2F;聚合，而不是使用类继承</p>
+<p><strong>聚合</strong>表示一种弱的“拥有”关系，体现的是A对象可以包含B对象，但B对象不是A对象的一部分；<strong>合成</strong>则是一种强的“拥有”关系，体现了严格的部分和整体关系</p>
+<p>个人理解：将A类对象和B类对象抽象出两个类，A抽象类中有B抽象类的属性并提供赋值方法，使它们能够自由组合</p>
+<h2 id="二十三、命令模式"><a href="#二十三、命令模式" class="headerlink" title="二十三、命令模式"></a>二十三、命令模式</h2><p>命令模式把请求一个操作的对象与知道怎么执行一个操作的对象分隔开</p>
+<p>个人理解：需要有一个抽象命令类与命令执行类，命令执行类为抽象命令类中的一个属性，抽象方法为执行命令，我们使用的时候是使用具体的命令类</p>
+<h2 id="二十四、职责链模式"><a href="#二十四、职责链模式" class="headerlink" title="二十四、职责链模式"></a>二十四、职责链模式</h2><p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止</p>
+<p>职责链可简化对象的相互连接，它们仅需保持一个指向其后继者的引用，而无需保持它所有的候选接受者的引用</p>
+<p>个人理解：首先封装一个条件类，该条件类通常具备一些条件类型，条件内容，数量等字段；然后抽象出一个管理者类，也就是来处理条件的，一定要有一个处理条件的抽象方法；管理者们通常会有层级之分，所以管理者的抽象类会有一个类型为自身的属性，这个属性代表上级管理者；在处理条件的方法中，如果当前管理者发现自身处理不了该条件，则需要将条件传递给上级去处理</p>
+<h2 id="二十五、中介者模式"><a href="#二十五、中介者模式" class="headerlink" title="二十五、中介者模式"></a>二十五、中介者模式</h2><p>用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互</p>
+<p>中介者模式一般应用于一组对象已定义良好但是复杂的方式进行通信的场合。</p>
+<p>个人理解：首先有一个抽象的实体类和一个抽象的中介者类，抽象实体类中有一个抽象中介者类的属性；它们都有一个声明的方法需要子类去实现，不过中介者的声明方法中会多一个实体类的参数，而实体类中的声明方法本质上是在调用中介者类的声明方法，并且是将自身作为参数，委托给中介者类去执行实体类中的其他业务方法</p>
+<h2 id="二十六、享元模式"><a href="#二十六、享元模式" class="headerlink" title="二十六、享元模式"></a>二十六、享元模式</h2><p>运用共享技术有效地支持大量细粒度的对象</p>
+<p>在程序设计中，有时需要生成大量细粒度的类实例来表示数据。当这些实例除了几个参数外基本相同时，如果能将参数移到类实例的外面，并在方法调用时将它们传递进来，就可以通过共享大幅度地减少单个实例的数量。</p>
+<p>个人理解：就是利用内存减少创建对象的数量。一个工厂类中维护着一个 <code>Map</code>，这里存放的都是具有相同特征的实体</p>
+<h2 id="二十七、解释器模式"><a href="#二十七、解释器模式" class="headerlink" title="二十七、解释器模式"></a>二十七、解释器模式</h2><p>如果一种特定类型的问题发生的概率足够高，那么可能就值得将该问题的各个实例表述为一个简单语言中的句子。这样就可以构建一个解释器，该解释器通过解释这些句子来解决该问题</p>
+<p>解释器模式的不足：解释器模式为文法中的每一条规定都至少定义了一个类，因此包含许多规则的文法可能难以管理和维护。建议当文法非常复杂时，使用其他的技术如语法分析程序或编译器生成器来处理</p>
+<p>个人理解：有一个抽象表达式类，需要子类实现解释操作，解释的对象定义一个公共的实体…</p>
+<h2 id="二十八、访问者模式"><a href="#二十八、访问者模式" class="headerlink" title="二十八、访问者模式"></a>二十八、访问者模式</h2><p>访问者模式适用于数据结构相对稳定的系统</p>
+<p>它把数据结构和作用于结构之上的操作之间的耦合解脱开，使得操作集合可以相对自由地演化</p>
+<p>个人理解：重点在于定义一个抽象实体类和一个状态抽象类，抽象实体类中有一个应用的抽象方法，参数就是一个状态抽象类，这个方法的目的是实体针对不同状态的处理；可预计的抽象实体类有多少个子类，在状态抽象类中就会有个多少个抽象方法，这些方法的含义是当前状态遇到某种实体时的反应，参数为具体的某一种实体类型；在抽象实体类的实现中，应用方法其实就是去调用状态抽象类中对应<strong>自己为参数</strong>的那一个抽象方法，写法是以 <code>this</code> 传递；状态的实现类，则按正常业务处理即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象实体类</span></span><br><span class="line"><span class="comment"> * 人类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(Action visitor)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 男人</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Man</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 去调用状态抽象类中对应自己为参数的那个抽象方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(Action visitor)</span> &#123;</span><br><span class="line">        visitor.getManConclusion(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 状态抽象类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Action</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 男人的反应</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">getManConclusion</span><span class="params">(Man concreteElementA)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 女人的反应</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">getWomanConclusion</span><span class="params">(Woman concreteElementB)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 成功</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Success</span> <span class="keyword">extends</span> <span class="title class_">Action</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getManConclusion</span><span class="params">(Man concreteElementA)</span> &#123;</span><br><span class="line">        System.out.println(concreteElementA.getClass().getSimpleName() + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.getClass().getSimpleName() + <span class="string">&quot;时，背后多半有一个伟大的女人&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getWomanConclusion</span><span class="params">(Woman concreteElementB)</span> &#123;</span><br><span class="line">        System.out.println(concreteElementB.getClass().getSimpleName() + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.getClass().getSimpleName() + <span class="string">&quot;时，背后大多有一个不成功的男人&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/11/09/study/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/">分布式事务详解</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/10/02/other/%E8%80%83%E9%A9%BE%E7%85%A7%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">考驾照的那些事儿</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\2023\08\13\study\Java代码精简指南\" title="Java代码精简指南"><span class="title">Java代码精简指南</span><span class="excerpt">Java代码精简</span></a></div></section></div>
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a href="/archives/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a href="/wiki/">笔记</a><a target="_blank" rel="noopener" href="https://gitee.com/coclong">开源库</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/notes/">友链</a><a href="/">留言板</a><a target="_blank" rel="noopener" href="https://space.bilibili.com/415988557">哔哩哔哩</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/more">关于本站</a><a target="_blank" rel="noopener" href="https://gitee.com/coclong">Gitee</a><a target="_blank" rel="noopener" href="https://github.com/Godlike-long">GitHub</a></div></div><div class="text"><p>本站由 <a href="/">sentry</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">一、简单工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">二、策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-text">三、单一职责原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%BC%80%E6%94%BE%E5%B0%81%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-text">四、开放封闭原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="toc-text">五、依赖倒转原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F"><span class="toc-text">六、装饰模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-text">七、代理模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">八、工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">九、原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">十、模板方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99"><span class="toc-text">十一、迪米特法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">十二、外观模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">十三、建造者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">十四、观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">十五、抽象工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="toc-text">十六、状态模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">十七、适配器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">十八、备忘录模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F"><span class="toc-text">十九、组合模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十、迭代器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E3%80%81%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十一、单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E3%80%81%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十二、桥接模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E3%80%81%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十三、命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E3%80%81%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十四、职责链模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E3%80%81%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十五、中介者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E3%80%81%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十六、享元模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E3%80%81%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十七、解释器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">二十八、访问者模式</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
